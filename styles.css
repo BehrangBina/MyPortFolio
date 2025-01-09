@@ -185,11 +185,12 @@ section {
     background-color: #d9534f;
     color: white;
     cursor: pointer;
+ 
 }
 
 .btn-primary {
     background-color: #f4623a;
-    float: right;
+   
 }
 
 .btn-xl {
