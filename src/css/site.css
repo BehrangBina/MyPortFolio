@@ -1,0 +1,80 @@
+.permanent-marker-regular {
+    font-family: "Permanent Marker", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.merriweather-light {
+    font-family: "Merriweather", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.merriweather-regular {
+    font-family: "Vollkorn", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.vollkorn-portfolio {
+    font-family: "Vollkorn", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.main-padding {
+    padding-top: 100px;
+}
+
+.nav-link:hover {
+    background-color: #666560;
+    text-decoration: underline;
+    transition: background-color 0.8s ease, font-size 0.3s ease;
+    font-family: "Vollkorn", serif;
+
+}
+.shadow{  
+      box-shadow: 0 0 5px 5px lightslategray;
+}
+.twoem{
+    font-size: 2em;
+}
+#navbar{
+  float: right;
+}
+/* #Home{background-color: rgb(237, 186, 27);} */
+.text-center {
+    text-align: center;
+}
+.yellow {
+    color: rgb(237, 186, 27) !important;
+}
+
+.progress-container {
+    position: relative;
+    font-size: 1rem; /* Remove the gap between the progress bar and the label */
+    width: 100%;
+}
+
+.progress-label {
+    position: absolute;
+    top: -20px; /* Adjust this value to position the label */
+    left: 0;
+    font-weight: bold;
+}
+
+.progress {
+    height: 30px; /* Adjust this value to increase the height */
+}
+
+.progress-bar {
+    line-height: 30px; /* Match this value to the height for vertical centering */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    z-index: 10;
+}
