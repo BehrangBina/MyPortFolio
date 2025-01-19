@@ -9,6 +9,8 @@ This is a single-page application for my personal portfolio. It showcases my ski
 - Navigation bar with links to different sections of the page
 - Home section with a welcome message
 - About section with information about me and my skills
+
+### To Be Completed
 - Services section detailing the services I offer
 - Portfolio section showcasing my work
 - Contact section with a form to get in touch
