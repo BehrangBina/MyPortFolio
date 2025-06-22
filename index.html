@@ -1,245 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="./src/img/fav-ico.jpg">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Interactive Resume Infographic - Behrang Bina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/x-icon" href="./src/img/fav-ico.jpg">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- 
+        Infographic Plan:
+        Narrative: Showcase the career progression and quantifiable impact of a Senior Automation Engineer.
+        Structure: 
+        1.  Hero section with headline stats.
+        2.  Core competencies and technical skills visualization.
+        3.  A timeline of professional experience with key achievements.
+        4.  A deep dive into measurable impacts (time reduction, coverage increase).
+        5.  A flowchart explaining the championed 'Shift-Left' methodology.
+        
+        Visualization Choices:
+        -   Headline Stats: 'Single Big Number' (HTML/CSS) to inform and impress.
+        -   Core Competencies: Radar Chart (Chart.js) to compare strengths across key areas.
+        -   Language Proficiency: Bar Chart (Chart.js) for clear comparison.
+        -   Career Journey: Timeline (HTML/CSS) to show change over time.
+        -   Quantifiable Impact: Donut and Bar Charts (Chart.js) to compare metrics.
+        -   Methodology: Flow Chart (HTML/CSS with Tailwind) to organize a process.
+        
+        Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All visuals are rendered using Chart.js on Canvas or structured with HTML/CSS.
 
-    <link rel="stylesheet" href="./src/css/site.css">
+        Color Palette Chosen: 'Brilliant Blues' (#00446A, #0077B6, #00B4D8, #90E0EF, #CAF0F8).
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* CAF0F8 lightened */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+    </style>
 </head>
+<body class="text-slate-700">
 
-<body class="bg-dark">
-    <main>
-        <section id="Home" class="vh-100">
-            <header class="fixed-top">
-                <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
-                    <div class="container">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas"
-                            aria-labelledby="offcanvasLabel">
-                            <div class="offcanvas-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <h3 class="merriweather-regular">Behrang Bina</h3>
-                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 float-end" id="navbar">
-                                    <li>
-                                        <a href="#" class="nav-link text-white">
-                                            <!-- text-secondary -->
-                                            <i class="fa-solid fa-house"></i>
-                                            Home
-                                        </a>
-                                    </li>
-                                    <!-- <li>
-                                    <a href="#" class="nav-link text-white">
-                                        <i class="fa-solid fa-chart-pie"></i>
-                                        Dashboard
-                                    </a>
-                                </li> -->
-                                    <li>
-                                        <a href="#Portfolio" class="nav-link text-white">
-                                            <i class="fa-solid fa-briefcase"></i>
-                                            Portfolio
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#About" class="nav-link text-white">
-                                            <i class="fa-solid fa-address-card"></i>
-                                            About
-                                        </a>
-                                    </li>
-                                    <!-- <li>
-                                        <a href="#" class="nav-link text-white">
-                                            <i class="fa-solid fa-address-book"></i>
-                                            Contact
-                                        </a>
-                                    </li> -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-            <div class="position-absolute top-50 start-50 translate-middle home-content merriweather-light">
-                <h2 class="display-2 yellow" id="name">Behrang Bina</h2><br />
-                <p class="text-center" contenteditable="true" spellcheck="false">
-                    <span class="typed text-white  twoem "
-                        data-typed-items="Designer, Developer, Freelancer, Photographer" contenteditable="true"
-                        spellcheck="false">
-                    </span><span class="typed-cursor" aria-hidden="true">|</span>
-                </p>
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#00446A] mb-2">Behrang (Ben) Bina</h1>
+            <p class="text-xl md:text-2xl font-semibold text-[#0077B6]">Senior Automation Engineer: A Decade of Impact</p>
+        </header>
+
+        <section id="kpis" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-16">
+            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[#00B4D8]">
+                <p class="text-5xl font-extrabold text-[#00446A]">12+</p>
+                <p class="font-semibold text-[#0077B6] mt-2">Years of Experience</p>
             </div>
-            <footer class="fixed-bottom text-center">
-                <p>
-                    <a href="https://www.linkedin.com/in/behrangbina/" target="_blank" class="text-white px-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
-                            fill="currentColor" class="mercado-match" width="48" height="48" focusable="false">
-                            <path
-                                d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z">
-                            </path>
-                        </svg></a>
-                        <a href="./src/docs/Behrang_Bina_Resume.docx" download="Behrang_Bina_Resume.docx" class="text-white" onclick="return confirm('Do you want to download the resume?');">
-                            <i class="fa-solid fa-paperclip fa-2xl"></i>
-                        </a>
-                </p>
-            </footer>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[#00B4D8]">
+                <p class="text-5xl font-extrabold text-[#00446A]">90%</p>
+                <p class="font-semibold text-[#0077B6] mt-2">Reduction in Regression Time</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[#00B4D8]">
+                <p class="text-5xl font-extrabold text-[#00446A]">4x</p>
+                <p class="font-semibold text-[#0077B6] mt-2">Faster Test Execution</p>
+            </div>
         </section>
-        <section id="Portfolio" class="modal-fullscreen bg-secondary-subtle vh-100">
-            <div class="container main-padding">
-                <div class="position-relative  border border-secondary rounded-3 p-3 shadow">
-                    <div class="container text-center">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <div class="text-center">
-                                    <img src="./src/img/me.jpg" class="img-fluid" alt="my photo"
-                                        style="border-radius: 50%;">
-                                </div>
-                            </div>
-                            <div class="col  twoem vollkorn-portfolio ">
-                                <h1 class="text-start pb-4">My Skills</h1>
 
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">API Testing</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="95%">95%</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">Integration Testing</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="90%">90%</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">Process Automation</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="95%">95%</div>
-                                    </div>
-                                </div>
-
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">E2E Testing</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="90%">90%</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">Web (Selenium/Playwright) </div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="98%">98%</div>
-                                    </div>
-                                </div>
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">Mobile Testing (Appium)</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="75%">75%</div>
-                                    </div>
-                                </div>
-
-                                <div class="progress-container pb-3">
-                                    <div class="progress-label">Database Testing</div>
-                                    <div class="progress mb-3 shadow" role="progressbar" aria-label="HTML"
-                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary" data-width="65%">65%</div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-[#00446A] mb-4 text-center">Core Competencies</h2>
+                <p class="text-center mb-4 text-sm text-slate-600">This radar chart visualizes proficiency across key areas of test automation, demonstrating a well-rounded and deeply specialized skill set.</p>
+                <div class="chart-container">
+                    <canvas id="competenciesChart"></canvas>
                 </div>
-        </section>
+            </div>
 
-        <section id="About" class="modal-fullscreen yellow vh-100">
-            <div class="container main-padding">
-                <div class="row">
-                    <div class="col">
-                        <h3>Summary:</h3>
-                        <em>
-                            Dynamic and results-driven Automation Engineer with over 11 years of experience in
-                            automation and manual testing across diverse and complex systems.
-                            Proven expertise in delivering high-quality software solutions through the development of
-                            robust automation frameworks,
-                            end-to-end testing, and continuous process improvement. Passionate about optimizing
-                            workflows, enhancing test coverage,
-                            and ensuring software quality in dynamic environments.
-                        </em>
-                        <ul>
-                            <li>Expertise in Automation Framework Development (C#, Java, JavaScript).</li>
-                            <li>Proficient in API, Database, Web, Desktop, and Mobile Testing.</li>
-                            <li>Skilled in CI/CD, Agile, and Scaled Agile methodologies.</li>
-                            <li>Strong background in test strategy design, metrics reporting, and process optimization.
-                            </li>
-                            <li>Experienced in cloud platforms (Azure, AWS) and integration testing.</li>
-                        </ul>
-                        <h3>Core Skills:</h3>
-                        <ul>
-                            <li>Programming/Scripting: C#, Java, JavaScript, TypeScript, SQL.</li>
-                            <li>Testing Tools: Postman, Fiddler, Insomnia, JMeter.</li>
-                            <li>CI/CD Tools: Octopus, TeamCity, Jenkins, Continua CI, Bamboo.</li>
-                            <li>Cloud Platforms: Azure, AWS, Ali Cloud.</li>
-                            <li>Frameworks & Methodologies: Agile, BDD, TDD, Robot Framework.</li>
-                            <li>Database Expertise: SQL Server, Oracle, MongoDB, MySQL, Azure Cosmos.</li>
-                            <li>Other Skills: Test plan creation, dynamic workflows, process improvement.</li>
-                        </ul>
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-[#00446A] mb-4 text-center">Language & Framework Expertise</h2>
+                 <p class="text-center mb-4 text-sm text-slate-600">This chart compares years of hands-on experience with the core programming languages and frameworks used to build robust automation solutions.</p>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#00446A] mb-8 text-center">Career Journey & Key Impacts</h2>
+                <div class="relative border-l-4 border-[#90E0EF] pl-8 space-y-12">
+                    
+                    <div class="relative">
+                        <div class="absolute -left-10 -top-1 w-6 h-6 bg-[#0077B6] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#00446A]">Senior Automation Engineer @ Cloudcon</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-2">Feb 2024 – Present</p>
+                        <p class="text-slate-600">Leading QA transformation by establishing enterprise-level testing strategies. Championed Shift-Left methodologies, cutting downstream defects by an estimated 50%.</p>
                     </div>
-                    <div class="col">
-                        <h5> Automation Test Analyst</h5>
-                        <h6 class="pb-2">Bunnings (Dec 2021 – Feb 2025)</h6>
-                        <h5> Automation Test Analyst</h5>
-                        <h6 class="pb-2">Accenture (Aug 2021 – Dec 2021)</h6>
-                        <h5> Quality Assurance Engineer</h5>
-                        <h6 class="pb-2">Ampion (Client: TAL Insurance) (July 2019 – Aug 2021)</h6>
-                        <h5> Lead Test Automation Specialist</h5>
-                        <h6 class="pb-2">Avocado Consulting (May 2018 – Apr 2019)</h6>
-                        <h5> Software QA And Automation Test Lead</h5>
-                        <h6 class="pb-2">Paritech (Nov 2016 – May 2018)</h6>
-                        <h5> Software Tester</h5>
-                        <h6 class="pb-2">Telstra (Apr 2013 – Nov 2015)</h6>
-                        <h5> Teaching Associate (C# ASP.NET MVC)</h5>
-                        <h6 class="pb-2">Monash University (Jul 2012 – Apr 2015)</h6>
+
+                    <div class="relative">
+                        <div class="absolute -left-10 -top-1 w-6 h-6 bg-[#0077B6] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#00446A]">Automation Test Analyst @ Bunnings</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-2">Dec 2021 – Feb 2024</p>
+                        <p class="text-slate-600">Revolutionized API testing with a dual Java/C# framework for 12+ critical systems. Increased test coverage by 40% and pioneered Azure Synapse testing.</p>
+                    </div>
+
+                     <div class="relative">
+                        <div class="absolute -left-10 -top-1 w-6 h-6 bg-[#0077B6] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#00446A]">QA Engineer @ Ampion (TAL Insurance)</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-2">Jul 2019 – Aug 2021</p>
+                        <p class="text-slate-600">Transformed testing by implementing a BDD approach with Java/Cucumber. Reduced regression time from days to hours by developing a dynamic data generation tool.</p>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute -left-10 -top-1 w-6 h-6 bg-[#0077B6] rounded-full border-4 border-white"></div>
+                        <h3 class="text-xl font-bold text-[#00446A]">Lead Test Automation Specialist @ Avocado Consulting</h3>
+                        <p class="text-sm font-medium text-slate-500 mb-2">May 2018 – Apr 2019</p>
+                        <p class="text-slate-600">Consulted clients on automation strategy and built a highly maintainable Robot Framework solution, increasing test execution speed by 4x and earning an Award of Excellence.</p>
                     </div>
 
                 </div>
             </div>
 
-        </section>
-    </main>
- 
+            <div class="lg:col-span-2 text-center">
+                 <h2 class="text-3xl font-bold text-[#00446A] mb-2">A Showcase of Quantifiable Improvements</h2>
+                 <p class="text-slate-600 mb-8 max-w-3xl mx-auto">Effective automation is measured by its impact. These charts illustrate the tangible benefits delivered through strategic testing initiatives across various roles.</p>
+            </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="./src/js/portfolio.js"></script>
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-[#00446A] mb-4 text-center">Regression Time Reduction (Bunnings)</h3>
+                <p class="text-center mb-4 text-sm text-slate-600">Optimizing frameworks and running tests in parallel led to a dramatic decrease in the time required for full regression cycles.</p>
+                <div class="chart-container h-72 md:h-80">
+                    <canvas id="timeReductionChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-[#00446A] mb-4 text-center">Test Stability & Coverage Gains</h3>
+                 <p class="text-center mb-4 text-sm text-slate-600">Intelligent retry logic eliminated false positives, while strategic automation expanded test coverage significantly.</p>
+                <div class="flex flex-col md:flex-row justify-around items-center h-72 md:h-80">
+                    <div class="chart-container !h-48 !w-48 md:!h-56 md:!w-56">
+                        <canvas id="failureReductionChart"></canvas>
+                    </div>
+                    <div class="chart-container !h-48 !w-48 md:!h-56 md:!w-56 mt-4 md:mt-0">
+                        <canvas id="coverageIncreaseChart"></canvas>
+                    </div>
+                </div>
+            </div>
 
+            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold text-[#00446A] mb-2 text-center">Championing the Shift-Left Approach</h2>
+                <p class="text-slate-600 mb-8 max-w-3xl mx-auto">This flowchart illustrates the 'Shift-Left' methodology, a core principle for integrating quality early in the development lifecycle to prevent defects, rather than just finding them.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="text-center p-4 border-2 border-[#00B4D8] rounded-lg bg-[#CAF0F8] w-full md:w-1/4">
+                        <p class="font-bold text-[#00446A]">1. Plan & Analyze</p>
+                        <p class="text-xs text-[#0077B6]">QA involved in requirement gathering & design.</p>
+                    </div>
+                    <p class="text-2xl font-bold text-[#0077B6] transform md:-rotate-0 rotate-90">→</p>
+                    <div class="text-center p-4 border-2 border-[#00B4D8] rounded-lg bg-[#CAF0F8] w-full md:w-1/4">
+                        <p class="font-bold text-[#00446A]">2. Develop & Unit Test</p>
+                        <p class="text-xs text-[#0077B6]">Developers write unit & integration tests.</p>
+                    </div>
+                    <p class="text-2xl font-bold text-[#0077B6] transform md:-rotate-0 rotate-90">→</p>
+                    <div class="text-center p-4 border-2 border-[#00B4D8] rounded-lg bg-[#CAF0F8] w-full md:w-1/4">
+                        <p class="font-bold text-[#00446A]">3. API & Integration Testing</p>
+                        <p class="text-xs text-[#0077B6]">Automated API tests run in CI/CD before UI.</p>
+                    </div>
+                     <p class="text-2xl font-bold text-[#0077B6] transform md:-rotate-0 rotate-90">→</p>
+                    <div class="text-center p-4 border-2 border-[#00B4D8] rounded-lg bg-[#CAF0F8] w-full md:w-1/4">
+                        <p class="font-bold text-[#00446A]">4. UI & E2E Testing</p>
+                        <p class="text-xs text-[#0077B6]">Final end-to-end validation on a stable build.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            dark: '#00446A',
+            medium: '#0077B6',
+            light: '#00B4D8',
+            lighter: '#90E0EF',
+            lightest: '#CAF0F8'
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: brilliantBlues.dark,
+                        font: {
+                            family: "'Inter', sans-serif",
+                            weight: '600'
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        
+        const wrapLabel = (label) => {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const createDoughnutChart = (ctx, label, data, dataLabel, chartColor) => {
+             new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [dataLabel, ''],
+                    datasets: [{
+                        data: [data, 100 - data],
+                        backgroundColor: [chartColor, brilliantBlues.lightest],
+                        borderColor: ['#ffffff', '#ffffff'],
+                        borderWidth: 4,
+                        circumference: 270,
+                        rotation: 225,
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    cutout: '70%',
+                    plugins: {
+                         legend: { display: false },
+                         tooltip: { enabled: false }
+                    }
+                },
+                plugins: [{
+                    id: 'doughnutText',
+                    beforeDraw(chart) {
+                        const { width, height, ctx } = chart;
+                        ctx.restore();
+                        const fontSize = (height / 114).toFixed(2);
+                        ctx.font = `bold ${fontSize}rem Inter`;
+                        ctx.textBaseline = 'middle';
+                        const text = `${data}%`;
+                        const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                        const textY = height / 1.7;
+                        ctx.fillStyle = brilliantBlues.dark;
+                        ctx.fillText(text, textX, textY);
+                        
+                        const labelText = label;
+                        const labelSize = (height / 220).toFixed(2);
+                        ctx.font = `600 ${labelSize}rem Inter`;
+                        const labelX = Math.round((width - ctx.measureText(labelText).width) / 2);
+                        const labelY = height / 1.3;
+                         ctx.fillStyle = brilliantBlues.medium;
+                        ctx.fillText(labelText, labelX, labelY);
+
+                        ctx.save();
+                    }
+                }]
+            });
+        };
+
+        const ctxCompetencies = document.getElementById('competenciesChart').getContext('2d');
+        new Chart(ctxCompetencies, {
+            type: 'radar',
+            data: {
+                labels: ['Framework Design', ['API & E2E', 'Testing'], 'CI/CD Integration', 'Cloud Testing', ['Agile & Shift-Left', 'Methodology'], 'Strategy & Leadership'],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [95, 90, 95, 85, 98, 90],
+                    fill: true,
+                    backgroundColor: 'rgba(0, 180, 216, 0.2)',
+                    borderColor: brilliantBlues.light,
+                    pointBackgroundColor: brilliantBlues.light,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: brilliantBlues.light
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: brilliantBlues.lighter },
+                        grid: { color: brilliantBlues.lighter },
+                        pointLabels: { 
+                            color: brilliantBlues.dark, 
+                            font: { size: 12, weight: 'bold' } 
+                        },
+                        ticks: {
+                            color: brilliantBlues.medium,
+                            backdropColor: 'rgba(0,0,0,0)',
+                            stepSize: 20
+                        },
+                         min: 0,
+                         max: 100
+                    }
+                }
+            }
+        });
+
+        const ctxSkills = document.getElementById('skillsChart').getContext('2d');
+        const skillLabels = ['C#', 'Java', 'JavaScript/TS', 'Selenium', 'Appium', 'Robot Framework'];
+        new Chart(ctxSkills, {
+            type: 'bar',
+            data: {
+                labels: skillLabels.map(wrapLabel),
+                datasets: [{
+                    label: 'Years of Experience',
+                    data: [12, 10, 8, 12, 5, 4],
+                    backgroundColor: [
+                        '#0077B6', '#00B4D8', '#0077B6', '#00B4D8', '#0077B6', '#00B4D8'
+                    ],
+                    borderRadius: 4,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        grid: { display: false, borderColor: brilliantBlues.dark },
+                        ticks: { color: brilliantBlues.dark }
+                    },
+                    y: {
+                        grid: { display: false, borderColor: brilliantBlues.dark },
+                        ticks: { color: brilliantBlues.dark }
+                    }
+                }
+            }
+        });
+        
+        const ctxTime = document.getElementById('timeReductionChart').getContext('2d');
+        new Chart(ctxTime, {
+            type: 'bar',
+            data: {
+                labels: ['Manual Process', 'Automated Framework'],
+                datasets: [{
+                    label: 'Regression Time (Hours)',
+                    data: [72, 6],
+                    backgroundColor: [brilliantBlues.lighter, brilliantBlues.medium],
+                    borderColor: [brilliantBlues.medium, brilliantBlues.dark],
+                    borderWidth: 2,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                 ...defaultChartOptions,
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Time in Hours', color: brilliantBlues.dark },
+                        grid: { color: brilliantBlues.lightest },
+                        ticks: { color: brilliantBlues.dark },
+                    },
+                    x: {
+                         grid: { display: false },
+                         ticks: { color: brilliantBlues.dark },
+                    }
+                 }
+            }
+        });
+
+        const ctxFailure = document.getElementById('failureReductionChart').getContext('2d');
+        createDoughnutChart(ctxFailure, 'Failure Reduction', 90, 'Failures Eliminated', brilliantBlues.medium);
+        
+        const ctxCoverage = document.getElementById('coverageIncreaseChart').getContext('2d');
+        createDoughnutChart(ctxCoverage, 'Coverage Increase', 40, 'Coverage Added', brilliantBlues.light);
+
+    </script>
 </body>
-
 </html>
